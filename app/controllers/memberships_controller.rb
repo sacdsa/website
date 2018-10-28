@@ -8,7 +8,7 @@ class MembershipsController < ApplicationController
     person = $nation_builder_client.call(:people, :match, email: email) rescue nil
     national_member = person['person']['tags'].include?('national_member') rescue false
     if national_member
-      national_member = person['person']['tags'].any? {|tag| tag.start_with?("meeting_general_")}
+      national_member = person['person']['tags'].any? {|tag| tag.start_with?("meeting_general_")} rescue false
     end
     
     whitelist = ENV['AUTH0_EMAIL_WHITELIST'].to_s.split(',')
