@@ -5,11 +5,12 @@ class EventsController < ApplicationController
   def index
     # When blank, returns all events
     @tags = params[:tags] || []
+    @exclude_tags = session.key?(:userinfo) ? [] : ["private"]
 
     respond_to do |format|
-
+      
       format.ics do
-        @events = Event.query(start_date: 1.month.ago.to_date.to_s, tags: @tags)
+        @events = Event.query(start_date: 1.month.ago.to_date.to_s, tags: @tags, exclude_tags: @exclude_tags)
         render plain: render_ical(@events, tags: @tags), content_type: 'text/calendar'
       end
 
@@ -20,10 +21,12 @@ class EventsController < ApplicationController
 
         end_date = @start_date.end_of_month
 
+        byebug
         @events = Event.query(
           start_date: (@start_date - 7.days).to_s,
           end_date: (end_date + 7.days).to_s,
-          tags: @tags
+          tags: @tags,
+          exclude_tags: @exclude_tags
         )
 
         if @start_date == Date.today.beginning_of_month

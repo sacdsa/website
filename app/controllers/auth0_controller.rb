@@ -1,9 +1,14 @@
 class Auth0Controller < ApplicationController
+  include ApplicationHelper
+  
   def callback
     # This stores all the user information that came from Auth0
     # and the IdP
-    session[:userinfo] = request.env['omniauth.auth']
-
+    email = request.env['omniauth.auth']['extra']['raw_info']['https://example.com/email'].to_s.strip.downcase  # the tag is weird because auth0 won't return the tag without adding a rule and the tag has to be weird...
+    if check_membership(email)
+      session[:userinfo] = request.env['omniauth.auth']
+    end
+    
     # Redirect to the URL you want after successful auth
     redirect_to '/'
   end
