@@ -15,6 +15,13 @@
       <%= yield(:meta) %>
     <% end %>
 
+    <!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-PJ86C3S');</script>
+	<!-- End Google Tag Manager -->
 
     <% if ENV['GOOGLE_ANALYTICS_ID'] %>
       <!-- Global Site Tag (gtag.js) - Google Analytics -->
@@ -36,7 +43,10 @@
   </head>
 
   <body>
-
+  	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ86C3S"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
     <div class='header'>
       <nav class='container'>
         <%= link_to(image_tag('dsa-logo-with-text-and-subtitle.svg', class: 'header__logo'), root_path) %>
@@ -73,7 +83,7 @@
     <%= yield %>
 
     <div class='footer'>
-      <div class='container'>
+      <div class='home-container home-content container container-full-width'>
         <div class='footer__menu'>
           <article>
             <p class='text-light'>Get Involved</p>
@@ -91,7 +101,20 @@
             </p>
           </article>
         </div>
-        <div class='footer__info'>
+        
+        <div class='footer__info'>        	
+          <% if Setting.search_in_footer %>
+            <article>
+              <%= form_tag 'https://duckduckgo.com/', method: :get, onsubmit: "this.elements['q'].value = 'site:#{current_domain} ' + this.elements['term'].value;" do %>
+                <div class='form__group'>
+                  <%= text_field_tag 'term', nil, class: 'input', placeholder: "Search #{current_domain}", required: true %>
+                  <%= hidden_field_tag 'q' %>
+                  <%= submit_tag 'Search', class: 'button button-primary' %>
+                </div>
+              <% end %>
+            </article>
+          <% end %>
+        	
           <article>
             <p class='text-light'>About Us</p>
             <p>
@@ -114,9 +137,9 @@
           <p class='text-light'>Made with love by your East Bay DSA comrades 🌹</p>
         </div>
         
-    	<!--><div class='footer__info'>
+    	<div class='footer__info' style="margin-left:1vw;">
     		<a class="twitter-timeline" data-height="400" href="https://twitter.com/DSAEastBay?ref_src=twsrc%5Etfw">Tweets by DSAEastBay</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    	</div>-->
+    	</div>
       </div>
     </div>
   </body>
