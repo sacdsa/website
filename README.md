@@ -1,4 +1,4 @@
-# East Bay DSA website
+# Sacramento DSA website
 
 This project aims to replace the existing NationBuilder-backed site with a
 new website built in Rails, that gives us an easy platform for technical
@@ -9,7 +9,7 @@ going forward.
 
 Dependencies:
 
-- Ruby >= 2.4.0
+- Ruby >= 2.5.1
 - Postgres
   - [postgresapp.com](https://postgresapp.com) is a great option here
   - Alternatively, you can install with [homebrew](https://brew.sh/)
@@ -21,8 +21,8 @@ Dependencies:
 Clone the repository source to local machine:
 
 ```sh
-git clone git@github.com:eastbaydsa/website.git ebdsa-website
-cd ebdsa-website
+git clone git@github.com:sacdsa/website.git sacdsa-website
+cd sacdsa-website
 ```
 
 In the cloned directory, install your gem dependencies with `bundler`:
