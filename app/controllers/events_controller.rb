@@ -113,9 +113,9 @@ protected
     cal = Icalendar::Calendar.new
 
     if options[:tags].present?
-      cal.x_wr_calname = "East Bay DSA - #{options[:tags].to_sentence}"
+      cal.x_wr_calname = "Sacramento DSA - #{options[:tags].to_sentence}"
     else
-      cal.x_wr_calname = 'East Bay DSA'
+      cal.x_wr_calname = 'Sacramento DSA'
     end
 
     if events.present? # add the time zone of the first event (they should all be the same)

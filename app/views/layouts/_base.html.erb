@@ -37,7 +37,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag 'favicon.png' %>
+    <%= favicon_link_tag 'favicon.svg' %>
 
     <%= render partial: 'layouts/schema' %>
   </head>
@@ -97,12 +97,12 @@
           <article>
             <p class='text-light'>Get In Touch</p>
             <p>
-              <%= link_to 'info@eastbaydsa.org', 'mailto:info@eastbaydsa.org' %>
+              <%= link_to 'admin@sacdsa.org', 'mailto:admin@sacdsa.org' %>
             </p>
           </article>
         </div>
-        
-        <div class='footer__info'>        	
+
+        <div class='footer__info'>
           <% if Setting.search_in_footer %>
             <article>
               <%= form_tag 'https://duckduckgo.com/', method: :get, onsubmit: "this.elements['q'].value = 'site:#{current_domain} ' + this.elements['term'].value;" do %>
@@ -114,7 +114,7 @@
               <% end %>
             </article>
           <% end %>
-        	
+
           <article>
             <p class='text-light'>About Us</p>
             <p>
@@ -129,8 +129,8 @@
           <article>
             <p class='text-light'>Follow Us</p>
             <p>
-              <%= link_to 'Facebook', 'https://www.facebook.com/eastbaydsa/' %><br>
-              <%= link_to 'Twitter', 'https://twitter.com/dsaeastbay' %>
+              <%= link_to 'Facebook', 'https://www.facebook.com/DSA.Sacramento/' %><br>
+              <%= link_to 'Twitter', 'https://twitter.com/DSASac' %>
             </p>
           </article>
 
@@ -138,7 +138,7 @@
         </div>
 
         <div class='footer__info'>
-          <a class="twitter-timeline" data-height="400" href="https://twitter.com/DSAEastBay?ref_src=twsrc%5Etfw">Tweets by DSAEastBay</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a class="twitter-timeline" data-height="400" href="https://twitter.com/DSASac?ref_src=twsrc%5Etfw">Tweets by DSASac</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
     </div>

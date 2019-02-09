@@ -1,7 +1,7 @@
 # config/settings.yml for rails-settings-cached
 defaults: &defaults
-  homepage_hardcoded: false
-  homepage_image_url: ''
+  homepage_hardcoded: true
+  homepage_image_url: 'https://s3.amazonaws.com/sacdsa-site-dev/dsa-ICE-rally-6-30.jpg'
   search_in_footer: true
 
 development:

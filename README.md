@@ -146,7 +146,7 @@ brew install heroku/brew/heroku
 Hook your local repo up to the Heroku app by adding a Git remote:
 
 ```sh
-heroku git:remote -a eastbaydsa-staging
+heroku git:remote -a sacdsa-staging
 ```
 
 ### Running Tests
@@ -165,7 +165,7 @@ bundle exec rake
 
 ### Staging Environment
 
-Visit the stage build at http://eastbaydsa-staging.herokuapp.com to test your changes.
+Visit the stage build at http://sacdsa-staging.herokuapp.com to test your changes.
 
 ### Deploy
 
