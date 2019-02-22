@@ -9,7 +9,7 @@ going forward.
 
 Dependencies:
 
-- Ruby >= 2.5.1
+- Ruby >= 2.6.1
 - Postgres
   - [postgresapp.com](https://postgresapp.com) is a great option here
   - Alternatively, you can install with [homebrew](https://brew.sh/)
@@ -172,7 +172,7 @@ Visit the stage build at http://sacdsa-staging.herokuapp.com to test your change
 Use Git to push the code to Heroku:
 
 ```sh
-git push heroku main:master
+git push heroku master
 ```
 
 You can name any local branch you want, but if should be pushed to the `master`
