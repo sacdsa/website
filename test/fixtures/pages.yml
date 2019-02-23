@@ -2,7 +2,7 @@
 #
 # Table name: pages
 #
-#  id                   :integer          not null, primary key
+#  id                   :bigint(8)        not null, primary key
 #  title                :text
 #  content              :text
 #  slug                 :string           not null

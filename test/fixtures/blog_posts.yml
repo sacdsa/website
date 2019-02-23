@@ -2,19 +2,20 @@
 #
 # Table name: blog_posts
 #
-#  id             :integer          not null, primary key
-#  title          :text
-#  content        :text
-#  posted_at      :datetime
-#  slug           :string           not null
-#  author_id      :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  featured_image :string
-#  listed         :boolean          default(TRUE)
-#  meta_title     :string
-#  meta_desc      :string
-#  featured       :boolean          default(TRUE), not null
+#  id                :bigint(8)        not null, primary key
+#  title             :text
+#  content           :text
+#  posted_at         :datetime
+#  slug              :string           not null
+#  author_id         :bigint(8)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  featured_image    :string
+#  listed            :boolean          default(TRUE)
+#  meta_title        :string
+#  meta_desc         :string
+#  featured          :boolean          default(TRUE), not null
+#  nation_builder_id :integer
 #
 # Indexes
 #
