@@ -57,7 +57,7 @@ ActiveAdmin.register Page do
     f.inputs 'Sign Up' do
       f.input :show_form, label: 'Display a sign-up form directly after the Content of this page.', hint: 'Make sure to put some text at the end of the "Content" section above, like "Sign up for our newsletter" in bold, to explain what this form signs you up for!'
       f.input :form_collect_phone, label: 'Collect phone number', hint: 'Useful for text/phone campaigns - requires both email and phone at signup.'
-      f.input :form_tags, hint: 'Comma-separated list of NationBuilder tags to add when someone signs up (e.g. "eb_supporter" to sign them up for our newsletter). At least 1 is required.'
+      f.input :form_tags, hint: 'Comma-separated list of NationBuilder tags to add when someone signs up (e.g. "newsletter" to sign them up for our newsletter). At least 1 is required.'
     end
     f.actions
   end

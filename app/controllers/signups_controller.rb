@@ -43,7 +43,7 @@ protected
       page = Page.find params[:page_id]
       return page.form_tags.to_s.split(',').map(&:strip).select(&:present?) - banlist
     else
-      return ['eb_supporter']
+      return ['newsletter']
     end
   end
 
