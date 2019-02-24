@@ -16,3 +16,7 @@
  *= require_self
  *= require font-awesome
  */
+
+.fa {
+  padding: 3px;
+}
