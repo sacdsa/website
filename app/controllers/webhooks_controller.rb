@@ -4,6 +4,7 @@ class WebhooksController < ApplicationController
 
   def meeting_sign_in
     $nation_builder_client.call(:people, :push, person: sign_in_params.to_h)
+    head :created
   rescue NationBuilder::ClientError => e
     error = JSON.parse(e.message)['validation_errors'][0].capitalize rescue nil
     error ||= JSON.parse(e.message)['message']
