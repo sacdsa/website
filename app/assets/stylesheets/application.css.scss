@@ -14,9 +14,11 @@
  *= require simple_calendar
  *= require_tree ./application
  *= require_self
- *= require font-awesome
  */
 
-.fa {
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+.fab {
   padding: 3px;
 }
