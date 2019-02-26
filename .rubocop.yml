@@ -1,9 +1,5 @@
-Style/FrozenStringLiteralComment:
+Metrics:
   Enabled: false
 
-Metrics/LineLength:
-  Max: 120
-
-Style/GlobalVars:
-  AllowedVariables:
-    - '$nation_builder_client'
+Style:
+  Enabled: false

@@ -14,10 +14,9 @@ Rails.application.routes.draw do
   get 'blog/:year/:month/:day/:slug', to: 'blog_posts#show', as: 'blog_post'
   post 'signup', to: 'signups#create', as: 'signup'
 
-  ###### API #####
+  ## API
   post 'external/signup-majority', to: 'signups#signup_majority', constraints: lambda { |req| req.format == :json }
   get 'memberships/check', to: 'memberships#check'
-  ################
 
   ## External/Legacy support ##
   get 'r', to: 'application#handle_redirect'
@@ -33,5 +32,10 @@ Rails.application.routes.draw do
 
   get '*slug', to: 'pages#show', as: 'page'
 
-  root to: "pages#home"
+  ## Webhooks
+  scope '/webhooks' do
+    post '/meeting_sign_in', to: 'webhooks#meeting_sign_in'
+  end
+
+  root to: 'pages#home'
 end
