@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    StreetAddress (1.0.6)
     actioncable (5.2.2)
       actionpack (= 5.2.2)
       nio4r (~> 2.0)
@@ -327,6 +328,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  StreetAddress
   activeadmin
   activeadmin_quill_editor
   activeadmin_settings_cached

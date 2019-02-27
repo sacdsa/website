@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   ## Webhooks
   scope '/webhooks' do
     post '/meeting_sign_in', to: 'webhooks#meeting_sign_in'
+    post '/new_event', to: 'webhooks#new_event'
   end
 
   root to: 'pages#home'

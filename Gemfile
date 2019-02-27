@@ -28,6 +28,7 @@ gem 'rack-slashenforce'
 gem 'rails', '~> 5.2.2'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_calendar', '~> 2.0'
+gem 'StreetAddress', require: 'street_address'
 gem 'trix'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'uglifier', '>= 1.3.0'

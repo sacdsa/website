@@ -10,8 +10,8 @@ class Event
   }
 
   attr_accessor :id, :name, :start_time, :end_time,
-    :description, :venue, :address, :image_url,
-    :tags, :accept_rsvps, :rsvp_phone
+                :description, :venue, :address, :image_url,
+                :tags, :accept_rsvps, :rsvp_phone
 
   def initialize api_response
     self.id = api_response['id']
@@ -58,8 +58,8 @@ class Event
   end
 
   def full_address
-    fields = [ 'address1', 'address2', 'address3', 'city', 'state', 'zip' ]
-    fields.map{|field| address[field] }.select(&:present?).join(', ')
+    fields = ['address1', 'address2', 'address3', 'city', 'state', 'zip']
+    fields.map { |field| address[field] }.select(&:present?).join(', ')
   end
 
   def self.query(start_date: Date.today, end_date: nil, limit: 500, tags: [], exclude_tags: [])
