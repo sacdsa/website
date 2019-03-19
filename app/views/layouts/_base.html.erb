@@ -59,9 +59,6 @@
           <% header_menu_items.each do |item| %>
             <li><%= link_to item.label, item.slug %></li>
           <% end %>
-          <% if admin_signed_in? %>
-            <li><%= link_to 'Admin', current_admin_path %></li>
-          <% end %>
         </ul>
         <!--<ul class='header__menu' role="menu">
         	<%# if session.key?(:userinfo) %>
@@ -91,13 +88,16 @@
               <% footer_menu_items.each do |item| %>
                 <%= link_to item.label, item.slug %><br>
               <% end %>
+              <% if admin_signed_in? %>
+                <li><%= link_to 'Admin', current_admin_path %></li>
+              <% end %>
             </p>
           </article>
 
           <article>
             <p class='text-light'>Get In Touch</p>
             <p>
-              <%= link_to 'admin@sacdsa.org', 'mailto:admin@sacdsa.org' %>
+              <%= link_to 'info@sacdsa.org', 'mailto:info@sacdsa.org' %>
             </p>
           </article>
         </div>
