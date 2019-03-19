@@ -89,7 +89,7 @@
                 <%= link_to item.label, item.slug %><br>
               <% end %>
               <% if admin_signed_in? %>
-                <li><%= link_to 'Admin', current_admin_path %></li>
+                <%= link_to 'Admin', current_admin_path %>
               <% end %>
             </p>
           </article>
