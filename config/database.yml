@@ -17,6 +17,7 @@ test:
 
 production:
   <<: *default
-  database: sacdsa-website-production
-  username: rails
+  database: sacdsa_website_production
+  host: <%= ENV['DATABASE_HOST'] %>
+  username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
