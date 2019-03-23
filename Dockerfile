@@ -10,6 +10,7 @@ RUN gem install bundler:2.0.1
 WORKDIR /usr/src/app
 COPY . .
 RUN bundle install
+RUN rails assets:precompile
 
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
