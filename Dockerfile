@@ -1,9 +1,8 @@
 FROM ruby:2.6
 
-RUN gem update --system
-RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt update \
+    && apt install -y --no-install-recommends \
         postgresql-client \
         nodejs \
         npm \
