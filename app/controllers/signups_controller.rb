@@ -8,16 +8,23 @@ class SignupsController < ApplicationController
       return
     end
 
+    # Add to NationBuilder
     person = $nation_builder_client.call(:people, :push, person: person_params.to_h)
     person_id = person['person']['id']
-
-    $nation_builder_client.call(:people, :tag_person, { id: person_id, tagging: { tag: page_form_tags }} )
+    $nation_builder_client.call(:people, :tag_person, { id: person_id, tagging: { tag: page_form_tags } })
+    # Add to MailChimp
+    list_id = ENV['MAILCHIMP_LIST_ID']
+    if list_id
+      $gibbon.lists(list_id).members.create(body: { email_address: person_params[:email], status: "subscribed" })
+    end
 
     redirect_back flash: { success: 'Thank you for signing up.' }, fallback_location: root_path
   rescue NationBuilder::ClientError => e
     error = JSON.parse(e.message)['validation_errors'][0].capitalize rescue nil
     error ||= JSON.parse(e.message)['message']
     redirect_back flash: { error: error }, fallback_location: root_path
+  rescue Gibbon::MailChimpError => e
+    redirect_back flash: { error: e.message }, fallback_location: root_path
   end
 
   def signup_majority
