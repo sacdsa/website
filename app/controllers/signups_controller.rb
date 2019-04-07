@@ -15,7 +15,15 @@ class SignupsController < ApplicationController
     # Add to MailChimp
     list_id = ENV['MAILCHIMP_LIST_ID']
     if list_id
-      $gibbon.lists(list_id).members.create(body: { email_address: person_params[:email], status: "subscribed" })
+      request = {
+        email_address: person_params[:email],
+        status: "subscribed",
+        merge_fields: {
+          FNAME: person_params[:first_name],
+          LNAME: person_params[:last_name]
+        }
+      }
+      $gibbon.lists(list_id).members.create(body: request)
     end
 
     redirect_back flash: { success: 'Thank you for signing up.' }, fallback_location: root_path
@@ -29,19 +37,19 @@ class SignupsController < ApplicationController
 
   def signup_majority
     person = $nation_builder_client.call(:people, :push, person: {
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      email: params[:email]
-    })
+                                           first_name: params[:first_name],
+                                           last_name: params[:last_name],
+                                           email: params[:email]
+                                         })
     person_id = person['person']['id']
 
-    $nation_builder_client.call(:people, :tag_person, { id: person_id, tagging: { tag: 'interest_majority' }} )
-    render json: {status: 'ok'}
+    $nation_builder_client.call(:people, :tag_person, { id: person_id, tagging: { tag: 'interest_majority' } })
+    render json: { status: 'ok' }
   rescue NationBuilder::ClientError => e
     render json: JSON.parse(e.message), status: 400
   end
 
-protected
+  protected
 
   def page_form_tags
     # pull tags for this signup from the Page object
@@ -55,7 +63,7 @@ protected
   end
 
   def person_params
-    person = params.fetch(:person, {}).permit :email, :mobile
+    person = params.fetch(:person, {}).permit :email, :mobile, :first_name, :last_name
     person[:email] = person[:email].downcase.strip if person[:email].present?
     person[:mobile] = person[:mobile].gsub(/[^0-9]/, '') if person[:mobile].present?
     person
