@@ -1,4 +1,4 @@
-FROM ruby:2.6
+FROM ruby:2.6.5
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt update \
@@ -8,7 +8,7 @@ RUN apt update \
         npm \
     && rm -rf /var/lib/apt/lists/*
 RUN npm install yarn -g
-RUN gem install bundler:2.0.1
+RUN gem install bundler:2.0.2
 
 WORKDIR /usr/src/app
 COPY . .
