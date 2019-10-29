@@ -41,14 +41,12 @@ ActiveAdmin.register BlogPost do
         )
         link_to(@url, @url, target: '_blank')
       end
-      row :meta_title
-      row :meta_desc
       row :featured_image do |post|
         if post.featured_image.attached?
           image_tag(url_for(post.featured_image), style: 'width:200px;height:auto;')
         end
       end
-      columns_to_exclude = ["title", "content"]
+      columns_to_exclude = ["title", "content", "featured_image"]
       (BlogPost.column_names - columns_to_exclude).each do |c|
         row c.to_sym
       end
