@@ -4,7 +4,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:type" content="article" />
   <% if @post.featured_image.attached? %>
-    <meta property="og:image" content="<%= @post.featured_image %>" />
+    <meta property="og:image" content="<%= url_for(@post.featured_image) %>" />
   <% end %>
 <% end %>
 
