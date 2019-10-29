@@ -10,7 +10,6 @@
 #  author_id         :bigint(8)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  featured_image    :string
 #  listed            :boolean          default(TRUE)
 #  meta_title        :string
 #  meta_desc         :string
@@ -31,4 +30,5 @@ class BlogPost < ApplicationRecord
 
   belongs_to :author, class_name: 'Admin'
   alias_attribute :to_param, :slug
+  has_one_attached :featured_image
 end

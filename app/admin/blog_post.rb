@@ -44,8 +44,8 @@ ActiveAdmin.register BlogPost do
       row :meta_title
       row :meta_desc
       row :featured_image do |post|
-        if post.featured_image != nil
-          image_tag(post.featured_image, style: 'width:200px;height:auto;')
+        if post.featured_image.attached?
+          image_tag(url_for(post.featured_image), style: 'width:200px;height:auto;')
         end
       end
       columns_to_exclude = ["title", "content"]
@@ -61,7 +61,7 @@ ActiveAdmin.register BlogPost do
     f.inputs do
       f.input :title, as: :string
       f.input :content, as: :quill_editor
-      f.input :featured_image, as: :s3_url
+      f.input :featured_image, as: :file
       f.input :slug, hint: 'Blog posts live at "/blog/:slug". Will be automatically generated if blank'
       f.input :author
       f.input :posted_at

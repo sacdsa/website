@@ -30,7 +30,9 @@ Rails.application.routes.draw do
   get 'auth/logout' => 'auth0#logout'
   get 'auth/failure' => 'auth0#failure'
 
-  get '*slug', to: 'pages#show', as: 'page'
+  get '*slug', to: 'pages#show', as: 'page', constraints: lambda { |req|
+    req.path.exclude? 'rails/active_storage'
+  }
 
   ## Webhooks
   scope '/webhooks' do

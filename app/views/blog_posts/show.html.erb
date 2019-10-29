@@ -3,7 +3,7 @@
 <%= content_for :meta do %>
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:type" content="article" />
-  <% if @post.featured_image %>
+  <% if @post.featured_image.attached? %>
     <meta property="og:image" content="<%= @post.featured_image %>" />
   <% end %>
 <% end %>
@@ -20,8 +20,8 @@
   </p>
 </div>
 
-<% unless @post.featured_image.blank? %>
-  <img class="news-featured-image" src="<%= @post.featured_image %>" />
+<% if @post.featured_image.attached? %>
+  <img class="news-featured-image" src="<%= url_for(@post.featured_image) %>" />
 <% end %>
 
 <article>

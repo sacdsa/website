@@ -10,7 +10,6 @@
 #  author_id         :bigint(8)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  featured_image    :string
 #  listed            :boolean          default(TRUE)
 #  meta_title        :string
 #  meta_desc         :string

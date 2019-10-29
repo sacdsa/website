@@ -23,8 +23,11 @@ module EbdsaWebsite
 
     # Handle errors with app controller
     config.exceptions_app = self.routes
-    
+
     config.action_controller.default_url_options = { trailing_slash: true }
     config.middleware.use Rack::AppendTrailingSlash
+
+    # ActiveStorage local
+    config.active_storage.service = :amazon
   end
 end
